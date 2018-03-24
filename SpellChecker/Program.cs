@@ -15,7 +15,7 @@ namespace SpellChecker
             int initialCapacity = 82765;
             int maxEditDistanceDictionary = 2; //maximum edit distance per dictionary precalculation
             var symSpell = new SymSpell(initialCapacity, maxEditDistanceDictionary);
-            string path = AppDomain.CurrentDomain.BaseDirectory + "../../../../SpellChecker/frequency_dictionary_en_82_765.txt";
+            string path = AppDomain.CurrentDomain.BaseDirectory + "../../../../SpellChecker/cuisinesdictionary.txt";
             if (!symSpell.LoadDictionary(path, 0, 1))
             {
                 Console.Error.WriteLine("\rFile not found: " + Path.GetFullPath(path));
@@ -44,7 +44,7 @@ namespace SpellChecker
         }
         public static void Correct(string input, SymSpell symSpell)
         {
-            List<SymSpell.SuggestItem> suggestions = null;
+            List<SymSpell.SuggestItem> suggestions = null;  // return the list of suggestions, await the list of suggestions
 
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();

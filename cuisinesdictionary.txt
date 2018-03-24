@@ -1,4 +1,4 @@
-american
-african
-jamaican
-chinese
+american 1
+african 1
+jamaican 1
+chinese 1
