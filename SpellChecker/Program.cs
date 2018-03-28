@@ -49,7 +49,7 @@ namespace SpellChecker
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
 
-            //check if input term or similar terms within edit-distance are in dictionary, return results sorted by ascending edit distance, then by descending word frequency     
+            //check if input term or similar terms within edit-distance are in dictionary, return results sorted by ascending edit distance, then by descending word frequency
             const SymSpell.Verbosity verbosity = SymSpell.Verbosity.Closest;
             suggestions = symSpell.Lookup(input, verbosity);
 
@@ -63,5 +63,32 @@ namespace SpellChecker
             }
             if (verbosity != SymSpell.Verbosity.Top) Console.WriteLine(suggestions.Count.ToString() + " suggestions");
         }
+        /*public bool LoadDictionary(string corpus, int termIndex, int countIndex)
+    {
+        if (!File.Exists(corpus)) return false;
+        var staging = new SuggestionStage(16384);
+        using (StreamReader sr = new StreamReader(File.OpenRead(corpus)))
+        {
+            String line;
+
+            //process a single line at a time only for memory efficiency
+            while ((line = sr.ReadLine()) != null)
+            {
+                string[] lineParts = line.Split(null);
+                if (lineParts.Length >= 2)
+                {
+                    string key = lineParts[termIndex];
+                    //Int64 count;
+                    if (Int64.TryParse(lineParts[countIndex], out Int64 count))
+                    {
+                        CreateDictionaryEntry(key, count, staging);
+                    }
+                }
+            }
+        }*/
+        if (this.deletes == null) this.deletes = new Dictionary<int, string[]>(staging.DeleteCount);
+        CommitStaged(staging);
+        return true;
+    }
     }
 }
