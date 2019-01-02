@@ -85,10 +85,13 @@ namespace SpellChecker
                     }
                 }
             }
-        }*/
-        if (this.deletes == null) this.deletes = new Dictionary<int, string[]>(staging.DeleteCount);
+        }
+        if (this.deletes == null) 
+        {
+            this.deletes = new Dictionary<int, string[]>(staging.DeleteCount);
+        }
         CommitStaged(staging);
         return true;
-    }
+    }*/
     }
 }
